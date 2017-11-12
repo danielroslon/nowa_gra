@@ -36,7 +36,6 @@ void game::loop()
 		c->shooting();
 
 		c->draw(&window);
-		c->wypisywanie_do_konsoli();
 		window.display();
 	}
 }

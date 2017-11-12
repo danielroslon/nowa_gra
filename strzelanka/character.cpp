@@ -22,24 +22,19 @@ void character::set_position(float _x, float _y)
 	figure.setPosition(_x , _y);
 	look_of_weapon.setPosition(_x, _y);
 }
-void character::rotate(Event *ev)
+void character::rotate(Event *ev)	
 {
 	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::A)
 	{
-		look_of_weapon.rotate(-15);
+		look_of_weapon.rotate(-10);
 	}
 	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::D)
 	{
-		look_of_weapon.rotate(15);
+		look_of_weapon.rotate(10);
 	}
 }
 void character::draw(RenderWindow *w)
 {
 	w->draw(figure);
 	w->draw(look_of_weapon);
-}
-
-void character::wypisywanie_do_konsoli()
-{
-	possessed_weapon->wypisz_ilosc_amunicji();
 }

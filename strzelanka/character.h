@@ -27,8 +27,5 @@ public:
 	virtual void move(Event*, RenderWindow*) = 0;
 	virtual void shooting() = 0;
 	virtual void reloading(Event *ev) = 0;
-
-
-	void wypisywanie_do_konsoli();
 };
 

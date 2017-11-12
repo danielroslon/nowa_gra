@@ -26,7 +26,6 @@ public:
 
 	virtual void shooting() = 0;
 	virtual void reload() = 0;
-	virtual void wypisz_ilosc_amunicji() = 0;
 	virtual bool is_empty() = 0;
 	virtual bool is_full() = 0;
 

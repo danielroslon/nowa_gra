@@ -21,6 +21,8 @@ m4a1::m4a1()
 	b_reload_sound.loadFromFile("reload.wav");
 	reload_sound.setBuffer(b_reload_sound);
 	reload_sound.setVolume(100);
+
+	std::cout << "Bullets " << bullets << std::endl;
 }
 
 
@@ -44,6 +46,7 @@ void m4a1::reload()
 			bullets = max_bullets;
 			reloading = false;		
 			clock.restart();
+			std::cout << "Bullets " << bullets << std::endl;
 		}
 	}
 }
@@ -56,6 +59,7 @@ void m4a1::shooting()
 			play_sound();
 			bullets--;
 			clock.restart();
+			std::cout << "Bullets " << bullets << std::endl;
 		}
 	}
 }
@@ -80,8 +84,4 @@ bool m4a1::is_full()
 	{
 		return false;
 	}
-}
-void m4a1::wypisz_ilosc_amunicji()
-{
-	std::cout << "Bullets " << bullets << std::endl;
 }

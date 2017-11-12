@@ -12,8 +12,5 @@ public:
 	void reload();
 	bool is_empty();
 	bool is_full();
-
-	////////////////////
-	void m4a1::wypisz_ilosc_amunicji();
 };
 
