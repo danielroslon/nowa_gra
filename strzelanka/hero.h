@@ -8,7 +8,7 @@ public:
 	hero();
 	~hero();
 
-	void move();
+	void move(Event*,RenderWindow*);
 
 };
 

@@ -10,7 +10,6 @@ class game
 {
 private:
 	RenderWindow window;
-
 	character *c;
 
 

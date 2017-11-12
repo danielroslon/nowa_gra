@@ -11,10 +11,10 @@ hero::~hero()
 {
 }
 
-void hero::move()
+void hero::move(Event *ev, RenderWindow *window)
 {
-	std::cout << "x: " << figure.getPosition().x;
-	std::cout.width(5);
-	std::cout.setf(std::ios::right);
-	std::cout << "y: " << figure.getPosition().y << std::endl;
+	if (ev->type == ev->MouseMoved)
+	{
+		set_position(Mouse::getPosition(*window).x, Mouse::getPosition(*window).y);
+	}
 }

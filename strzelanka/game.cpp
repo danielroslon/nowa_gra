@@ -5,6 +5,7 @@
 game::game(int x, int y): window(VideoMode(x,y, 32), "Gra", Style::None)
 {
 	c = new hero;
+	window.setMouseCursorVisible(false);
 }
 
 
@@ -26,16 +27,14 @@ void game::loop()
 			{
 				window.close();
 			}
-			if (ev.type == ev.MouseMoved)
-			{
-				window.setMouseCursorVisible(false);
-				c->set_position(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
-			}
+			c->move(&ev, &window);
+			c->rotate(&ev);
+			c->shooting(&ev);
 		}
 		window.clear(Color::Black);
 
 		c->draw(&window);
-		c->move();
+		c->wypisywanie_do_konsoli();
 		window.display();
 	}
 }
