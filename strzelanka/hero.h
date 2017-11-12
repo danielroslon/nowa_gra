@@ -9,6 +9,7 @@ public:
 	~hero();
 
 	void move(Event*,RenderWindow*);
-
+	void shooting();
+	void reloading(Event*);
 };
 

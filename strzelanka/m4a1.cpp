@@ -2,8 +2,14 @@
 
 
 
-m4a1::m4a1(): cooldown(50), reload_time(2800), max_bullets(25), bullets(25)
+m4a1::m4a1()
 {
+	cooldown = 90;
+	reload_time = 2800;
+	max_bullets = 25;
+	bullets = 25;
+	reloading = false;
+
 	b_shooting_sound.loadFromFile("m4a1.wav");
 	shooting_sound.setBuffer(b_shooting_sound);
 	shooting_sound.setVolume(100);
@@ -24,28 +30,57 @@ m4a1::~m4a1()
 
 void m4a1::reload()
 {
-	clock.restart();
-	reload_sound.play();
-	while (clock.getElapsedTime().asMilliseconds() <= reload_time)
+	if (!is_full())
 	{
-		std::cout << "Bullets reloading: " << clock.getElapsedTime().asMilliseconds() << std::endl;
+		if (reloading == false)
+		{
+			clock.restart();
+			reload_sound.play();
+			reloading = true;
+			bullets = 0;
+		}	
+		if (clock.getElapsedTime().asMilliseconds() >= reload_time)
+		{
+			bullets = max_bullets;
+			reloading = false;		
+			clock.restart();
+		}
 	}
-	bullets = max_bullets;
 }
 void m4a1::shooting()
 {
-	if (bullets > 0 && clock.getElapsedTime().asMilliseconds() >= cooldown)
+	if (!is_empty())
 	{
-		play_sound();
-		bullets--;
-		clock.restart();
-	}
-	if (bullets == 0)
-	{
-		reload();
+		if (clock.getElapsedTime().asMilliseconds() >= cooldown)
+		{
+			play_sound();
+			bullets--;
+			clock.restart();
+		}
 	}
 }
-
+bool m4a1::is_empty()
+{
+	if (bullets == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+bool m4a1::is_full()
+{
+	if (bullets == max_bullets)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 void m4a1::wypisz_ilosc_amunicji()
 {
 	std::cout << "Bullets " << bullets << std::endl;

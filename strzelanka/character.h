@@ -22,11 +22,11 @@ public:
 
 	void set_position(float, float);
 	void rotate(Event*);
-
-	void shooting(Event *ev);
-
 	void draw(RenderWindow*);
-	void virtual move(Event*, RenderWindow*) = 0;
+
+	virtual void move(Event*, RenderWindow*) = 0;
+	virtual void shooting() = 0;
+	virtual void reloading(Event *ev) = 0;
 
 
 	void wypisywanie_do_konsoli();

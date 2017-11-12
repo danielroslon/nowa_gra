@@ -2,8 +2,9 @@
 
 int main()
 {
+	std::cout << "Wczytywanie..." << std::endl;
 	srand(time(NULL));
-	game g(800,600);
+	game g(1000,800);
 
 	g.loop();
 

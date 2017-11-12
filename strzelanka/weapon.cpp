@@ -9,7 +9,6 @@ weapon::~weapon()
 {
 }
 
-
 void weapon::play_sound()
 {
 	shooting_sound.play();

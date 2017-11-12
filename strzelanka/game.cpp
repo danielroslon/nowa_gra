@@ -29,9 +29,11 @@ void game::loop()
 			}
 			c->move(&ev, &window);
 			c->rotate(&ev);
-			c->shooting(&ev);
+			c->reloading(&ev);
 		}
 		window.clear(Color::Black);
+
+		c->shooting();
 
 		c->draw(&window);
 		c->wypisywanie_do_konsoli();

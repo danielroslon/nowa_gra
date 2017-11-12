@@ -38,13 +38,6 @@ void character::draw(RenderWindow *w)
 	w->draw(figure);
 	w->draw(look_of_weapon);
 }
-void character::shooting(Event *ev)
-{
-	if (ev->type == ev->MouseButtonPressed && ev->mouseButton.button == Mouse::Left)
-	{
-		possessed_weapon->shooting();
-	}
-}
 
 void character::wypisywanie_do_konsoli()
 {
