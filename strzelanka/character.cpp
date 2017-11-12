@@ -2,9 +2,10 @@
 
 
 
-character::character(): figure(50,200)
+character::character(): figure(20,1000), color(Color::Red)
 {
-	figure.setFillColor(Color::Red);
+	figure.setOrigin(figure.getRadius(), figure.getRadius());
+	figure.setFillColor(color);
 }
 
 
@@ -15,7 +16,7 @@ character::~character()
 
 void character::set_position(float _x, float _y)
 {
-	figure.setPosition(_x - figure.getRadius(), _y - figure.getRadius());
+	figure.setPosition(_x , _y);
 }
 void character::draw(RenderWindow *w)
 {

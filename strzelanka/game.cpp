@@ -4,7 +4,7 @@
 
 game::game(int x, int y): window(VideoMode(x,y, 32), "Gra", Style::None)
 {
-	c.set_position(x/2,y/2);
+	c = new hero;
 }
 
 
@@ -15,6 +15,8 @@ game::~game()
 
 void game::loop()
 {
+	c->set_position(400,300);
+
 	while (window.isOpen())
 	{
 		Event ev;
@@ -24,10 +26,16 @@ void game::loop()
 			{
 				window.close();
 			}
+			if (ev.type == ev.MouseMoved)
+			{
+				window.setMouseCursorVisible(false);
+				c->set_position(Mouse::getPosition(window).x, Mouse::getPosition(window).y);
+			}
 		}
 		window.clear(Color::Black);
 
-		c.draw(&window);
+		c->draw(&window);
+		c->move();
 		window.display();
 	}
 }
