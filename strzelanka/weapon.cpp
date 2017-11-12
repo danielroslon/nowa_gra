@@ -2,7 +2,7 @@
 
 
 
-weapon::weapon()
+weapon::weapon(Vector2f v): weapon_position(v)
 {
 }
 weapon::~weapon()

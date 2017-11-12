@@ -33,7 +33,7 @@ void game::loop()
 		}
 		window.clear(Color::Black);
 
-		c->shooting();
+		c->shooting(&window);
 
 		c->draw(&window);
 		window.display();

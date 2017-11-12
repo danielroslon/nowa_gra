@@ -4,6 +4,7 @@
 
 hero::hero(): character()
 {
+	hp = 200;
 }
 
 
@@ -18,7 +19,7 @@ void hero::move(Event *ev, RenderWindow *window)
 		set_position(Mouse::getPosition(*window).x, Mouse::getPosition(*window).y);
 	}
 }
-void hero::shooting()
+void hero::shooting(RenderWindow* w)
 {
 	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
@@ -28,6 +29,12 @@ void hero::shooting()
 	{
 		possessed_weapon->reload();
 	}
+	if (!possessed_weapon->is_list_empty())
+	{
+		possessed_weapon->move_bullets();
+		possessed_weapon->render_bullets(w);
+	}
+	
 }
 void hero::reloading(Event *ev)
 {

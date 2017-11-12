@@ -6,14 +6,15 @@
 
 #include "weapon.h"
 #include "m4a1.h"
+#include "bullet.h"
 
 using namespace sf;
 
 class character
 {
 protected:
+	double hp;
 	CircleShape figure;
-	RectangleShape look_of_weapon;
 	weapon *possessed_weapon;
 	Color color;
 public:
@@ -25,7 +26,7 @@ public:
 	void draw(RenderWindow*);
 
 	virtual void move(Event*, RenderWindow*) = 0;
-	virtual void shooting() = 0;
+	virtual void shooting(RenderWindow*) = 0;
 	virtual void reloading(Event *ev) = 0;
 };
 
