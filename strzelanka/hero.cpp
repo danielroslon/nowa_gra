@@ -4,7 +4,7 @@
 
 hero::hero(): character()
 {
-	speed = 20;
+	speed = 30;
 	hp = 200;
 	crosshair.setFillColor(Color::Black);
 	crosshair.setRadius(2);
@@ -106,7 +106,7 @@ void hero::shooting(RenderWindow* w)
 	}
 	if (!possessed_weapon->is_list_empty())
 	{
-		possessed_weapon->move_bullets();
+		possessed_weapon->move_bullets(w);
 		possessed_weapon->render_bullets(w);
 	}
 	

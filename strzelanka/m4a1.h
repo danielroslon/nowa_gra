@@ -20,6 +20,6 @@ public:
 	void rotate_weapon(double);
 	Vector2f get_weapon_position();
 	float get_weapon_rotation();
-	void move_bullets();
+	void move_bullets(RenderWindow*);
 };
 

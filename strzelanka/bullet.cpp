@@ -115,7 +115,7 @@ bool list::is_empty()
 		return false;
 	}
 }
-void list::move()
+void list::move(RenderWindow *w)
 {
 	bullet *wsk = head;
 	while (wsk != NULL)
@@ -170,7 +170,7 @@ void list::move()
 		}
 
 		//Usuwanie pocisków
-		if (wsk->figure.getPosition().x > 1000 || wsk->figure.getPosition().y > 800 || wsk->figure.getPosition().x < 0 || wsk->figure.getPosition().y < 0)
+		if (wsk->figure.getPosition().x > w->getSize().x || wsk->figure.getPosition().y > w->getSize().y || wsk->figure.getPosition().x < 0 || wsk->figure.getPosition().y < 0)
 		{
 			bullet *b = wsk;
 			wsk = wsk->next;

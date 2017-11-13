@@ -131,7 +131,7 @@ float m4a1::get_weapon_rotation()
 {
 	return figure.getRotation();
 }
-void m4a1::move_bullets()
+void m4a1::move_bullets(RenderWindow *w)
 {
-	list_of_existing_bullets.move();
+	list_of_existing_bullets.move(w);
 }

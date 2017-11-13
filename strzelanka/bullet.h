@@ -36,6 +36,6 @@ public:
 	void remove_bullet(int);
 	void render(RenderWindow*);
 	bool is_empty();
-	void move();
+	void move(RenderWindow*);
 };
 
