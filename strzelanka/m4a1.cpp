@@ -129,5 +129,6 @@ Vector2f m4a1::get_weapon_position()
 }
 void m4a1::move_bullets()
 {
+	std::cout << "Rotation: " << look_of_weapon.getRotation() << std::endl;
 	list_of_existing_bullets.move();
 }

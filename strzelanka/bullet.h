@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include <iostream>
 
 using namespace sf;
 
@@ -26,6 +27,7 @@ class list
 private:
 	bullet *head;
 	bullet *tail;
+	int ammount;
 public:
 	list();
 

@@ -31,7 +31,7 @@ int bullet::get_id()
 	return id;
 }
 
-list::list(): head(NULL), tail(NULL)
+list::list(): head(NULL), tail(NULL), ammount(0)
 {
 
 }
@@ -39,6 +39,7 @@ list::list(): head(NULL), tail(NULL)
 
 void list::add_bullet(double _dmg, Vector2f v, float r)
 {
+	ammount++;
 	if (head == NULL)
 	{
 		head = new bullet(_dmg, v, r);
@@ -50,13 +51,18 @@ void list::add_bullet(double _dmg, Vector2f v, float r)
 		tail->next->prev = tail;
 		tail = tail->next;
 	}
+	tail->set_id(ammount);
 }
 void list::remove_bullet(int _id)
 {
 	bullet *wsk = head;
 
-	while (wsk != NULL || wsk->get_id() == _id)
+	while (wsk != NULL)
 	{
+		if (wsk->get_id() == _id)
+		{
+			break;
+		}
 		wsk = wsk->next;
 	}
 	if (wsk != NULL)
@@ -67,6 +73,7 @@ void list::remove_bullet(int _id)
 			{
 				head->set_id(0);
 				head = head->next;
+				ammount = 0;
 			}
 			else
 			{
@@ -111,7 +118,56 @@ void list::move()
 	bullet *wsk = head;
 	while (wsk != NULL)
 	{
-		wsk->figure.move(1,0);
-		wsk = wsk->next;
+
+		
+
+		
+		
+		if (wsk->figure.getRotation() >= 0 && wsk->figure.getRotation() < 90)
+		{
+			double pom = wsk->figure.getRotation();
+			pom*= 0.0174532925;
+			double p = 1 -pom;
+			wsk->figure.move(p, pom);
+		}
+		
+		if (wsk->figure.getRotation() >= 90 && wsk->figure.getRotation() < 180)
+		{
+			double pom = 90 - wsk->figure.getRotation();
+			pom = fabs(pom);
+			pom *= 0.0174532925;
+			double p = 1 - pom;
+			wsk->figure.move(-pom, +p);
+		}
+	
+		if (wsk->figure.getRotation() >= 180 && wsk->figure.getRotation() < 270)
+		{
+			double pom = 180 - wsk->figure.getRotation();
+			pom = fabs(pom);
+			pom *= 0.0174532925;
+			double p = 1 - pom;
+			wsk->figure.move(-p, -pom);
+		}
+		
+		if (wsk->figure.getRotation() >= 270 && wsk->figure.getRotation() < 360)
+		{
+			double pom = 270 - wsk->figure.getRotation();
+			pom = fabs(pom);
+			pom *= 0.0174532925;
+			double p = 1 - pom;
+			wsk->figure.move(+pom, -p);
+		}
+
+
+		if (wsk->figure.getPosition().x > 1000 || wsk->figure.getPosition().y > 800 || wsk->figure.getPosition().x < 0 || wsk->figure.getPosition().y < 0)
+		{
+			bullet *b = wsk;
+			wsk = wsk->next;
+			remove_bullet(b->get_id());
+		}
+		if (wsk != NULL)
+		{
+			wsk = wsk->next;
+		}
 	}
 }
