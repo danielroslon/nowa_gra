@@ -7,8 +7,8 @@ public:
 	hero();
 	~hero();
 
-	void move(Event*,RenderWindow*);
-	void rotate(Event*, RenderWindow*);
+	void move(RenderWindow*);
+	void rotate(RenderWindow*);
 	void shooting(RenderWindow*);
 	void reloading(Event*);
 };

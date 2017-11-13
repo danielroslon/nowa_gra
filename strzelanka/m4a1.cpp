@@ -127,6 +127,10 @@ Vector2f m4a1::get_weapon_position()
 {
 	return weapon_position;
 }
+float m4a1::get_weapon_rotation()
+{
+	return figure.getRotation();
+}
 void m4a1::move_bullets()
 {
 	list_of_existing_bullets.move();

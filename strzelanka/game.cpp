@@ -27,12 +27,13 @@ void game::loop()
 			{
 				window.close();
 			}
-			c->move(&ev, &window);
-			c->rotate(&ev, &window);
+			
 			c->reloading(&ev);
 		}
 		window.clear(Color::White);
 
+		c->move(&window);
+		c->rotate(&window);
 		c->shooting(&window);
 
 		c->draw(&window);

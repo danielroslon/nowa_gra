@@ -30,8 +30,8 @@ public:
 
 	void draw(RenderWindow*);
 
-	virtual void move(Event*, RenderWindow*) = 0;
-	virtual void rotate(Event*, RenderWindow*) = 0;
+	virtual void move(RenderWindow*) = 0;
+	virtual void rotate(RenderWindow*) = 0;
 	virtual void shooting(RenderWindow*) = 0;
 	virtual void reloading(Event *ev) = 0;
 };
