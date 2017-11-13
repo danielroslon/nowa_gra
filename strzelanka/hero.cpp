@@ -19,6 +19,17 @@ void hero::move(Event *ev, RenderWindow *window)
 		set_position(Mouse::getPosition(*window).x, Mouse::getPosition(*window).y);
 	}
 }
+void hero::rotate(Event *ev)
+{
+	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::A)
+	{
+		possessed_weapon->rotate_weapon(-10);
+	}
+	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::D)
+	{
+		possessed_weapon->rotate_weapon(10);
+	}
+}
 void hero::shooting(RenderWindow* w)
 {
 	if (Mouse::isButtonPressed(Mouse::Button::Left))

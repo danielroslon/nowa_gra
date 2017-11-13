@@ -7,8 +7,8 @@ m4a1::m4a1(Vector2f v): weapon(v)
 	dmg = 25;
 	cooldown = 90;
 	reload_time = 2800;
-	max_bullets = 25;
-	bullets = 25;
+	max_bullets = 2500;
+	bullets = 2500;
 	reloading = false;
 
 	b_shooting_sound.loadFromFile("m4a1.wav");
@@ -28,7 +28,7 @@ m4a1::m4a1(Vector2f v): weapon(v)
 	look_of_weapon.setSize(Vector2f(20, 2));
 	look_of_weapon.setPosition(v);
 	look_of_weapon.setFillColor(Color::Green);
-
+	look_of_weapon.setOrigin(0, look_of_weapon.getSize().y/2);
 
 	std::cout << "Bullets " << bullets << std::endl;
 }
@@ -129,6 +129,5 @@ Vector2f m4a1::get_weapon_position()
 }
 void m4a1::move_bullets()
 {
-	std::cout << "Rotation: " << look_of_weapon.getRotation() << std::endl;
 	list_of_existing_bullets.move();
 }

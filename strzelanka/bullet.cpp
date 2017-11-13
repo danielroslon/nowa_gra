@@ -5,8 +5,10 @@
 bullet::bullet(double _dmg, Vector2f v, float r): figure(2), dmg(_dmg), next(NULL), prev(NULL), id(0)
 {
 	figure.setFillColor(Color::Red);
+	figure.setOrigin(figure.getRadius(), figure.getRadius());
 	figure.setPosition(v);
 	figure.setRotation(r);
+	figure.scale(10,1);
 }
 
 
@@ -117,48 +119,57 @@ void list::move()
 {
 	bullet *wsk = head;
 	while (wsk != NULL)
-	{
-
-		
-
-		
-		
+	{	
 		if (wsk->figure.getRotation() >= 0 && wsk->figure.getRotation() < 90)
 		{
-			double pom = wsk->figure.getRotation();
-			pom*= 0.0174532925;
-			double p = 1 -pom;
-			wsk->figure.move(p, pom);
-		}
-		
+			double x = wsk->figure.getRotation();
+			x = x * 0.0174532925;
+			x = cos(x);
+
+			double y = wsk->figure.getRotation();
+			y = y * 0.0174532925;
+			y = sin(y);
+	
+			wsk->figure.move(x, y);
+		}	
 		if (wsk->figure.getRotation() >= 90 && wsk->figure.getRotation() < 180)
 		{
-			double pom = 90 - wsk->figure.getRotation();
-			pom = fabs(pom);
-			pom *= 0.0174532925;
-			double p = 1 - pom;
-			wsk->figure.move(-pom, +p);
+			double x = 90 - wsk->figure.getRotation();
+			x = x * 0.0174532925;
+			x = sin(x);
+
+			double y = 90 - wsk->figure.getRotation();
+			y = y * 0.0174532925;
+			y = cos(y);
+
+			wsk->figure.move(x, y);
 		}
-	
 		if (wsk->figure.getRotation() >= 180 && wsk->figure.getRotation() < 270)
 		{
-			double pom = 180 - wsk->figure.getRotation();
-			pom = fabs(pom);
-			pom *= 0.0174532925;
-			double p = 1 - pom;
-			wsk->figure.move(-p, -pom);
+			double x = 180 - wsk->figure.getRotation();
+			x = x * 0.0174532925;
+			x = cos(x);
+
+			double y = 180 - wsk->figure.getRotation();
+			y = y * 0.0174532925;
+			y = sin(y);
+
+			wsk->figure.move(-x, y);
 		}
-		
 		if (wsk->figure.getRotation() >= 270 && wsk->figure.getRotation() < 360)
 		{
-			double pom = 270 - wsk->figure.getRotation();
-			pom = fabs(pom);
-			pom *= 0.0174532925;
-			double p = 1 - pom;
-			wsk->figure.move(+pom, -p);
+			double x = 270 - wsk->figure.getRotation();
+			x = x * 0.0174532925;
+			x = sin(x);
+
+			double y = 270 - wsk->figure.getRotation();
+			y = y * 0.0174532925;
+			y = cos(y);
+
+			wsk->figure.move(-x, -y);
 		}
 
-
+		//Usuwanie pocisków
 		if (wsk->figure.getPosition().x > 1000 || wsk->figure.getPosition().y > 800 || wsk->figure.getPosition().x < 0 || wsk->figure.getPosition().y < 0)
 		{
 			bullet *b = wsk;

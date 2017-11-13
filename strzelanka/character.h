@@ -22,10 +22,11 @@ public:
 	~character();
 
 	void set_position(float, float);
-	void rotate(Event*);
+
 	void draw(RenderWindow*);
 
 	virtual void move(Event*, RenderWindow*) = 0;
+	virtual void rotate(Event*) = 0;
 	virtual void shooting(RenderWindow*) = 0;
 	virtual void reloading(Event *ev) = 0;
 };

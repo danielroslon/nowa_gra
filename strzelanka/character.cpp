@@ -20,17 +20,6 @@ void character::set_position(float _x, float _y)
 	figure.setPosition(_x , _y);
 	possessed_weapon->set_weapon_position(_x,_y);
 }
-void character::rotate(Event *ev)	
-{
-	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::A)
-	{
-		possessed_weapon->rotate_weapon(-10);
-	}
-	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::D)
-	{
-		possessed_weapon->rotate_weapon(10);
-	}
-}
 void character::draw(RenderWindow *w)
 {
 	w->draw(figure);
