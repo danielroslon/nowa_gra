@@ -5,10 +5,10 @@
 m4a1::m4a1(Vector2f v): weapon(v)
 {
 	dmg = 25;
-	cooldown = 90;
+	cooldown = 80;
 	reload_time = 2800;
-	max_bullets = 2500;
-	bullets = 2500;
+	max_bullets = 30;
+	bullets = 30;
 	reloading = false;
 
 	b_shooting_sound.loadFromFile("m4a1.wav");

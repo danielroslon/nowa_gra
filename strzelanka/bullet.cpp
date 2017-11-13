@@ -8,7 +8,7 @@ bullet::bullet(double _dmg, Vector2f v, float r): figure(2), dmg(_dmg), next(NUL
 	figure.setOrigin(figure.getRadius(), figure.getRadius());
 	figure.setPosition(v);
 	figure.setRotation(r);
-	figure.scale(10,1);
+	figure.scale(4,0.3);
 }
 
 
