@@ -34,5 +34,6 @@ public:
 	virtual void rotate(RenderWindow*) = 0;
 	virtual void shooting(RenderWindow*) = 0;
 	virtual void reloading(Event *ev) = 0;
+	virtual void write_amount_of_bullets(RenderWindow*) = 0;
 };
 

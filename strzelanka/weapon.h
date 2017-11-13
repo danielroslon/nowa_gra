@@ -35,19 +35,22 @@ public:
 	weapon(Vector2f);
 	~weapon();
 
-	virtual void shooting() = 0;
-	virtual void reload() = 0;
-	virtual bool is_empty() = 0;
-	virtual bool is_full() = 0;
-	virtual bool is_list_empty() = 0;
-	virtual void render_bullets(RenderWindow*) = 0;
+	void shooting();
+	void reload();
+	bool is_empty();
+	bool is_full();
+	bool is_list_empty();
+	void render_bullets(RenderWindow*);
 
-	virtual void draw_weapon(RenderWindow*) = 0;
-	virtual void set_weapon_position(float,float) = 0;
-	virtual void rotate_weapon(double) = 0;
-	virtual Vector2f get_weapon_position() = 0;
-	virtual float get_weapon_rotation() = 0;
-	virtual void move_bullets(RenderWindow*) = 0;
+	unsigned get_ammo();
+	unsigned get_max_ammo();
+
+	void draw_weapon(RenderWindow*);
+	void set_weapon_position(float,float);
+	void rotate_weapon(double);
+	Vector2f get_weapon_position();
+	float get_weapon_rotation();
+	void move_bullets(RenderWindow*);
 
 	void play_sound();
 };

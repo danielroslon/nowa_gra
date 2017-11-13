@@ -18,6 +18,8 @@ void game::loop()
 {
 	while (window.isOpen())
 	{
+		window.clear(Color::White);
+
 		Event ev;
 		while(window.pollEvent(ev))
 		{
@@ -28,11 +30,11 @@ void game::loop()
 			
 			c->reloading(&ev);
 		}
-		window.clear(Color::White);
 
 		c->move(&window);
 		c->rotate(&window);
 		c->shooting(&window);
+		c->write_amount_of_bullets(&window);
 
 		c->draw(&window);
 		window.display();

@@ -12,7 +12,6 @@ private:
 	RenderWindow window;
 	character *c;
 
-
 public:
 	game(int,int);
 	~game();

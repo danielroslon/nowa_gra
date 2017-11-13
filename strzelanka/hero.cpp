@@ -9,6 +9,12 @@ hero::hero(RenderWindow *w): character(w)
 	crosshair.setFillColor(Color::Black);
 	crosshair.setRadius(2);
 	figure.setPosition(w->getSize().x/2, w->getSize().y/2);
+	possessed_weapon = new m4a1(figure.getPosition());
+
+	font.loadFromFile("font.otf");
+	amount_of_bullets.setColor(Color::Black);
+	amount_of_bullets.setString("No weapon");
+	amount_of_bullets.setFont(font);
 }
 
 
@@ -68,25 +74,25 @@ void hero::rotate(RenderWindow* w)
 		float v_x = m_x - figure.getPosition().x;
 		float v_y = m_y - figure.getPosition().y;
 
-		if (v_x >= 0 && v_y >= 0)
+		if (v_x >= 0 && v_y > 0)
 		{
 			float rotation = v_y / v_x;
 			rotation = atan(rotation) * 180 / 3.14159265359;
 			possessed_weapon->rotate_weapon(rotation);
 		}
-		if (v_x <= 0 && v_y >= 0)
+		if (v_x <= 0 && v_y > 0)
 		{
 			float rotation = -v_x / v_y;
 			rotation = atan(rotation) * 180 / 3.14159265359;
 			possessed_weapon->rotate_weapon(rotation + 90);
 		}
-		if (v_x <= 0 && v_y <= 0)
+		if (v_x <= 0 && v_y < 0)
 		{
 			float rotation = v_y / v_x;
 			rotation = atan(rotation) * 180 / 3.14159265359;
 			possessed_weapon->rotate_weapon(rotation + 180);
 		}
-		if (v_x >= 0 && v_y <= 0)
+		if (v_x >= 0 && v_y < 0)
 		{
 			float rotation = v_x / -v_y;
 			rotation = atan(rotation) * 180 / 3.14159265359;
@@ -110,7 +116,6 @@ void hero::shooting(RenderWindow* w)
 		possessed_weapon->move_bullets(w);
 		possessed_weapon->render_bullets(w);
 	}
-	
 }
 void hero::reloading(Event *ev)
 {
@@ -118,4 +123,24 @@ void hero::reloading(Event *ev)
 	{
 		possessed_weapon->reload();
 	}
+}
+void hero::write_amount_of_bullets(RenderWindow *w)
+{
+	std::stringstream s;
+	s << possessed_weapon->get_ammo();
+	s << " ";
+	s << possessed_weapon->get_max_ammo();
+
+	std::string ammo;
+	std::string max_ammo;
+
+	s >> ammo;
+	s >> max_ammo;
+
+	std::string napis = "Ammunition: ";
+	napis = napis + ammo + "/" + max_ammo;
+
+	amount_of_bullets.setString(napis);
+
+	w->draw(amount_of_bullets);
 }

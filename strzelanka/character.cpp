@@ -6,7 +6,6 @@ character::character(RenderWindow* w): figure(10,1000), hp(100),speed(100), colo
 {
 	figure.setOrigin(figure.getRadius(), figure.getRadius());
 	figure.setFillColor(color);
-	possessed_weapon = new m4a1(figure.getPosition());
 }
 
 character::~character()
