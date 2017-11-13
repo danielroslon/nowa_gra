@@ -23,7 +23,7 @@ protected:
 
 	Clock clock;
 public:
-	character();
+	character(RenderWindow*);
 	~character();
 
 	void set_position(float, float);

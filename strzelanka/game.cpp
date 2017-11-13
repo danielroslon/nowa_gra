@@ -4,7 +4,7 @@
 
 game::game(int x, int y): window(VideoMode(x,y, 32), "Gra", Style::None)
 {
-	c = new hero;
+	c = new hero(&window);
 	window.setMouseCursorVisible(false);
 }
 
@@ -16,8 +16,6 @@ game::~game()
 
 void game::loop()
 {
-	c->set_position(400,300);
-
 	while (window.isOpen())
 	{
 		Event ev;

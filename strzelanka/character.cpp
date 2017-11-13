@@ -2,7 +2,7 @@
 
 
 
-character::character(): figure(10,1000), hp(100),speed(100), color(Color::Black)
+character::character(RenderWindow* w): figure(10,1000), hp(100),speed(100), color(Color::Black)
 {
 	figure.setOrigin(figure.getRadius(), figure.getRadius());
 	figure.setFillColor(color);

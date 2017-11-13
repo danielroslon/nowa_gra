@@ -2,12 +2,13 @@
 
 
 
-hero::hero(): character()
+hero::hero(RenderWindow *w): character(w)
 {
 	speed = 30;
 	hp = 200;
 	crosshair.setFillColor(Color::Black);
 	crosshair.setRadius(2);
+	figure.setPosition(w->getSize().x/2, w->getSize().y/2);
 }
 
 

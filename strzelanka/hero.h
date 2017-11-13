@@ -4,7 +4,7 @@ class hero: public character
 {
 private:
 public:
-	hero();
+	hero(RenderWindow*);
 	~hero();
 
 	void move(RenderWindow*);
