@@ -3,13 +3,12 @@
 class hero: public character
 {
 private:
-	
 public:
 	hero();
 	~hero();
 
 	void move(Event*,RenderWindow*);
-	void rotate(Event *ev);
+	void rotate(Event*, RenderWindow*);
 	void shooting(RenderWindow*);
 	void reloading(Event*);
 };

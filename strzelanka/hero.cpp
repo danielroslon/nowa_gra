@@ -4,7 +4,10 @@
 
 hero::hero(): character()
 {
+	speed = 10;
 	hp = 200;
+	crosshair.setFillColor(Color::Black);
+	crosshair.setRadius(2);
 }
 
 
@@ -14,20 +17,63 @@ hero::~hero()
 
 void hero::move(Event *ev, RenderWindow *window)
 {
-	if (ev->type == ev->MouseMoved)
+	//if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::W)
+	//{
+	//	figure.move(0,-10);
+	//	possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
+	//}
+	//if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::S) 
+	//{
+	//	figure.move(0, 10);
+	//	possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
+	//}
+	//if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::A) 
+	//{
+	//	figure.move(-10, 0);
+	//	possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
+	//}
+	//if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::D)
+	//{
+	//	figure.move(10, 0);
+	//	possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
+	//}
+
+	if (clock.getElapsedTime().asMilliseconds() >= speed)
 	{
-		set_position(Mouse::getPosition(*window).x, Mouse::getPosition(*window).y);
+		if (Keyboard::isKeyPressed(Keyboard::W))
+		{
+			figure.move(0, -10);
+			possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
+		}
+		if (Keyboard::isKeyPressed(Keyboard::S))
+		{
+			figure.move(0, 10);
+			possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
+		}
+		if (Keyboard::isKeyPressed(Keyboard::A))
+		{
+			figure.move(-10, 0);
+			possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
+		}
+		if (Keyboard::isKeyPressed(Keyboard::D))
+		{
+			figure.move(10, 0);
+			possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
+		}
+		clock.restart();
 	}
+	
+
 }
-void hero::rotate(Event *ev)
+void hero::rotate(Event *ev, RenderWindow* w)
 {
-	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::A)
+
+	if (ev->type == ev->MouseMoved && ev->MouseMoved)
 	{
-		possessed_weapon->rotate_weapon(-10);
-	}
-	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::D)
-	{
-		possessed_weapon->rotate_weapon(10);
+		float x = Mouse::getPosition(*w).x;
+		float y = Mouse::getPosition(*w).y;
+
+		crosshair.setPosition(x,y);
 	}
 }
 void hero::shooting(RenderWindow* w)

@@ -25,10 +25,10 @@ m4a1::m4a1(Vector2f v): weapon(v)
 
 
 
-	look_of_weapon.setSize(Vector2f(20, 2));
-	look_of_weapon.setPosition(v);
-	look_of_weapon.setFillColor(Color::Green);
-	look_of_weapon.setOrigin(0, look_of_weapon.getSize().y/2);
+	figure.setSize(Vector2f(20, 2));
+	figure.setPosition(v);
+	figure.setFillColor(Color::Red);
+	figure.setOrigin(0, figure.getSize().y/2);
 
 	std::cout << "Bullets " << bullets << std::endl;
 }
@@ -66,7 +66,7 @@ void m4a1::shooting()
 		if (clock.getElapsedTime().asMilliseconds() >= cooldown)
 		{
 			play_sound();
-			list_of_existing_bullets.add_bullet(dmg, look_of_weapon.getPosition(), look_of_weapon.getRotation());
+			list_of_existing_bullets.add_bullet(dmg, figure.getPosition(), figure.getRotation());
 			bullets--;
 			clock.restart();
 			std::cout << "Bullets " << bullets << std::endl;
@@ -113,15 +113,15 @@ void m4a1::render_bullets(RenderWindow *w)
 
 void m4a1::draw_weapon(RenderWindow *w)
 {
-	w->draw(look_of_weapon);
+	w->draw(figure);
 }
 void m4a1::set_weapon_position(float x, float y)
 {
-	look_of_weapon.setPosition(x, y);
+	figure.setPosition(x, y);
 }
 void m4a1::rotate_weapon(double a)
 {
-	look_of_weapon.rotate(a);
+	figure.setRotation(a);
 }
 Vector2f m4a1::get_weapon_position()
 {

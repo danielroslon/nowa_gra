@@ -14,9 +14,14 @@ class character
 {
 protected:
 	double hp;
+	double speed;
+
 	CircleShape figure;
 	weapon *possessed_weapon;
+	CircleShape crosshair;
 	Color color;
+
+	Clock clock;
 public:
 	character();
 	~character();
@@ -26,7 +31,7 @@ public:
 	void draw(RenderWindow*);
 
 	virtual void move(Event*, RenderWindow*) = 0;
-	virtual void rotate(Event*) = 0;
+	virtual void rotate(Event*, RenderWindow*) = 0;
 	virtual void shooting(RenderWindow*) = 0;
 	virtual void reloading(Event *ev) = 0;
 };

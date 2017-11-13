@@ -2,13 +2,12 @@
 
 
 
-character::character(): figure(10,1000), hp(100), color(Color::Green)
+character::character(): figure(10,1000), hp(100),speed(100), color(Color::Black)
 {
 	figure.setOrigin(figure.getRadius(), figure.getRadius());
 	figure.setFillColor(color);
 	possessed_weapon = new m4a1(figure.getPosition());
 }
-
 
 character::~character()
 {
@@ -24,4 +23,5 @@ void character::draw(RenderWindow *w)
 {
 	w->draw(figure);
 	possessed_weapon->draw_weapon(w);
+	w->draw(crosshair);
 }

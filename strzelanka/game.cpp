@@ -28,10 +28,10 @@ void game::loop()
 				window.close();
 			}
 			c->move(&ev, &window);
-			c->rotate(&ev);
+			c->rotate(&ev, &window);
 			c->reloading(&ev);
 		}
-		window.clear(Color::Black);
+		window.clear(Color::White);
 
 		c->shooting(&window);
 

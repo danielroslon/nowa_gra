@@ -4,7 +4,7 @@
 
 bullet::bullet(double _dmg, Vector2f v, float r): figure(2), dmg(_dmg), next(NULL), prev(NULL), id(0)
 {
-	figure.setFillColor(Color::Red);
+	figure.setFillColor(Color::Black);
 	figure.setOrigin(figure.getRadius(), figure.getRadius());
 	figure.setPosition(v);
 	figure.setRotation(r);

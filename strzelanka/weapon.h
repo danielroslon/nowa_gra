@@ -19,7 +19,7 @@ protected:
 	Clock clock;
 	bool reloading;
 
-	RectangleShape look_of_weapon;
+	RectangleShape figure;
 
 	Vector2f weapon_position;
 
