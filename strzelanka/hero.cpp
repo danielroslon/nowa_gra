@@ -137,9 +137,16 @@ void hero::write_amount_of_bullets(RenderWindow *w)
 	s >> ammo;
 	s >> max_ammo;
 
-	std::string napis = "Ammunition: ";
-	napis = napis + ammo + "/" + max_ammo;
+	std::string napis;
 
+	if (possessed_weapon->is_empty())
+	{
+		napis = "Reloading...";
+	}
+	else
+	{
+		napis = "Ammunition: " + napis + ammo + "/" + max_ammo;
+	}
 	amount_of_bullets.setString(napis);
 
 	w->draw(amount_of_bullets);

@@ -68,14 +68,12 @@ void weapon::reload()
 			reload_sound.play();
 			reloading = true;
 			bullets = 0;
-			std::cout << "Reloading... " << std::endl;
 		}
 		if (clock.getElapsedTime().asMilliseconds() >= reload_time)
 		{
 			bullets = max_bullets;
 			reloading = false;
 			clock.restart();
-			std::cout << "Bullets " << bullets << std::endl;
 		}
 	}
 }
@@ -89,7 +87,6 @@ void weapon::shooting()
 			list_of_existing_bullets.add_bullet(dmg, figure.getPosition(), figure.getRotation());
 			bullets--;
 			clock.restart();
-			std::cout << "Bullets " << bullets << std::endl;
 		}
 	}
 }

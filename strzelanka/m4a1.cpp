@@ -23,18 +23,12 @@ m4a1::m4a1(Vector2f v): weapon(v)
 	reload_sound.setBuffer(b_reload_sound);
 	reload_sound.setVolume(100);
 
-
-
 	figure.setSize(Vector2f(20, 2));
 	figure.setPosition(v);
 	figure.setFillColor(Color::Red);
 	figure.setOrigin(0, figure.getSize().y/2);
-
-	std::cout << "Bullets " << bullets << std::endl;
 }
-
 
 m4a1::~m4a1()
 {
 }
-
