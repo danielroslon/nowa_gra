@@ -42,6 +42,8 @@ public:
 	bool is_full();
 	bool is_list_empty();
 	void render_bullets(RenderWindow*);
+	list* get_list();
+	bullet* get_head();
 
 	unsigned get_ammo();
 	unsigned get_max_ammo();
@@ -54,7 +56,7 @@ public:
 	void move_bullets(RenderWindow*);
 
 	void play_sound();
-
+	void set_volume(double);
 
 	friend class user_interface;
 };

@@ -20,6 +20,8 @@ class bullet
 	void set_dmg(double);
 	double get_dmg();
 	int get_id();
+	Vector2f get_position();
+	double get_radius();
 	void set_id(int);
 };
 
@@ -37,5 +39,6 @@ public:
 	void render(RenderWindow*);
 	bool is_empty();
 	void move(RenderWindow*);
+	bullet* get_head();
 };
 

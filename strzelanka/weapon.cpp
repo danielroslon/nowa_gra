@@ -52,12 +52,27 @@ unsigned weapon::get_max_ammo()
 {
 	return max_bullets;
 }
+list* weapon::get_list()
+{
+	return &list_of_existing_bullets;
+}
+bullet* weapon::get_head()
+{
+	return list_of_existing_bullets.get_head();
+}
 
 void weapon::play_sound()
 {
 	shooting_sound.play();
 	bullet_drop_sound.play();
 }
+void weapon::set_volume(double _volume)
+{
+	shooting_sound.setVolume(_volume);
+	reload_sound.setVolume(_volume);
+	bullet_drop_sound.setVolume(_volume);
+}
+
 void weapon::reload()
 {
 	if (!is_full())

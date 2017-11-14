@@ -33,7 +33,7 @@ void game::loop()
 		c.move(&window);
 		c.rotate(&window);
 		c.shooting(&window);
-
+		c.is_hit(enemy.get_list_of_bullets());
 		
 		enemy.get_hero_position(c.get_position());
 		enemy.move(&window);

@@ -33,6 +33,16 @@ int bullet::get_id()
 	return id;
 }
 
+Vector2f bullet::get_position()
+{
+	return figure.getPosition();
+}
+double bullet::get_radius()
+{
+	return figure.getRadius();
+}
+
+
 list::list(): head(NULL), tail(NULL), ammount(0)
 {
 
@@ -73,9 +83,9 @@ void list::remove_bullet(int _id)
 		{
 			if (wsk->next != NULL)
 			{
-				head->set_id(0);
+				//head->set_id(0);
 				head = head->next;
-				ammount = 0;
+				//ammount = 0;
 			}
 			else
 			{
@@ -181,4 +191,8 @@ void list::move(RenderWindow *w)
 			wsk = wsk->next;
 		}
 	}
+}
+bullet* list::get_head()
+{
+	return head;
 }

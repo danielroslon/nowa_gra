@@ -31,6 +31,7 @@ public:
 	Vector2f get_position();
 
 	void draw(RenderWindow*);
+	void is_hit(list*);
 
 	virtual void move(RenderWindow*) = 0;
 	virtual void rotate(RenderWindow*) = 0;
