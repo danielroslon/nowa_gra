@@ -28,6 +28,7 @@ public:
 
 	void set_position(float, float);
 	unsigned get_bullets();
+	Vector2f get_position();
 
 	void draw(RenderWindow*);
 

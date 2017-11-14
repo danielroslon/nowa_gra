@@ -2,9 +2,8 @@
 
 
 
-game::game(int x, int y): window(VideoMode(x,y, 32), "Gra", Style::None)
+game::game(int x, int y): window(VideoMode(x,y, 32), "Gra", Style::None), c(&window), enemy(&window)
 {
-	c = new hero(&window);
 	window.setMouseCursorVisible(false);
 }
 
@@ -28,16 +27,23 @@ void game::loop()
 				window.close();
 			}
 			
-			c->reloading(&ev);
+			c.reloading(&ev);
 		}
 
-		c->move(&window);
-		c->rotate(&window);
-		c->shooting(&window);
+		c.move(&window);
+		c.rotate(&window);
+		c.shooting(&window);
 
+		
+		enemy.get_hero_position(c.get_position());
+		enemy.move(&window);
+		enemy.rotate(&window);
+		enemy.shooting(&window);
 
 		ui.draw(&window, c);
-		c->draw(&window);
+
+		enemy.draw(&window);
+		c.draw(&window);
 		window.display();
 	}
 }

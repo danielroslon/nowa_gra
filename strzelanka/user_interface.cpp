@@ -18,14 +18,14 @@ user_interface::~user_interface()
 {
 }
 
-void user_interface::draw(RenderWindow *w, character* c)
+void user_interface::draw(RenderWindow *w, hero c)
 {
 	std::stringstream *buf;
 	buf = new std::stringstream;
 	
-	*buf << c->possessed_weapon->get_ammo();
+	*buf << c.possessed_weapon->get_ammo();
 	*buf << " ";
-	*buf << c->possessed_weapon->get_max_ammo();
+	*buf << c.possessed_weapon->get_max_ammo();
 
 	std::string ammo;
 	std::string max_ammo;
@@ -34,20 +34,20 @@ void user_interface::draw(RenderWindow *w, character* c)
 	*buf >> max_ammo;
 
 	std::string napis;
-	if (c->possessed_weapon->is_empty())
+	if (c.possessed_weapon->is_empty())
 	{
 		napis = "Reloading...";
 	}
 	else
 	{
-		napis = c->possessed_weapon->name + " - " + napis + ammo + "/" + max_ammo;
+		napis = c.possessed_weapon->name + " - " + napis + ammo + "/" + max_ammo;
 	}
 	amount_of_bullets.setString(napis);
 	delete buf;
 	napis = "";
 	 
 	buf = new std::stringstream;
-	*buf<< c->hp;
+	*buf<< c.hp;
 	std::string health;
 	*buf >> health;
 	napis = napis + "Health - " + health;

@@ -26,7 +26,7 @@ m4a1::m4a1(Vector2f v): weapon(v)
 
 	figure.setSize(Vector2f(20, 2));
 	figure.setPosition(v);
-	figure.setFillColor(Color::Red);
+	figure.setFillColor(Color::Black);
 	figure.setOrigin(0, figure.getSize().y/2);
 }
 

@@ -22,6 +22,10 @@ unsigned character::get_bullets()
 {
 	return possessed_weapon->get_ammo();
 }
+Vector2f character::get_position()
+{
+	return figure.getPosition();
+}
 void character::draw(RenderWindow *w)
 {
 	w->draw(figure);

@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <sstream>
 #include "character.h"
+#include "hero.h"
 
 using namespace sf;
 
@@ -16,6 +17,6 @@ public:
 	user_interface();
 	~user_interface();
 
-	void draw(RenderWindow*, character*);
+	void draw(RenderWindow*, hero);
 };
 

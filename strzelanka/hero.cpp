@@ -28,7 +28,6 @@ void hero::move(RenderWindow *w)
 			{
 				figure.setPosition(figure.getPosition().x, w->getSize().y);
 			}
-			possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
 		}
 		if (Keyboard::isKeyPressed(Keyboard::S))
 		{
@@ -37,7 +36,6 @@ void hero::move(RenderWindow *w)
 			{
 				figure.setPosition(figure.getPosition().x, 0);
 			}
-			possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
 		}
 		if (Keyboard::isKeyPressed(Keyboard::A))
 		{
@@ -46,7 +44,6 @@ void hero::move(RenderWindow *w)
 			{
 				figure.setPosition(w->getSize().x, figure.getPosition().y);
 			}
-			possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
 		}
 		if (Keyboard::isKeyPressed(Keyboard::D))
 		{
@@ -55,8 +52,8 @@ void hero::move(RenderWindow *w)
 			{
 				figure.setPosition(0, figure.getPosition().y);
 			}
-			possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
 		}
+		possessed_weapon->set_weapon_position(figure.getPosition().x, figure.getPosition().y);
 		clock.restart();
 	}
 }
@@ -106,11 +103,9 @@ void hero::shooting(RenderWindow* w)
 	{
 		possessed_weapon->reload();
 	}
-	if (!possessed_weapon->is_list_empty())
-	{
-		possessed_weapon->move_bullets(w);
-		possessed_weapon->render_bullets(w);
-	}
+	possessed_weapon->move_bullets(w);
+	possessed_weapon->render_bullets(w);
+	
 }
 void hero::reloading(Event *ev)
 {
