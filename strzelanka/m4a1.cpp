@@ -4,6 +4,7 @@
 
 m4a1::m4a1(Vector2f v): weapon(v)
 {
+	name = "M4A1";
 	dmg = 25;
 	cooldown = 80;
 	reload_time = 2800;

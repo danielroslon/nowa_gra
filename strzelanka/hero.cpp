@@ -10,11 +10,6 @@ hero::hero(RenderWindow *w): character(w)
 	crosshair.setRadius(2);
 	figure.setPosition(w->getSize().x/2, w->getSize().y/2);
 	possessed_weapon = new m4a1(figure.getPosition());
-
-	font.loadFromFile("font.otf");
-	amount_of_bullets.setColor(Color::Black);
-	amount_of_bullets.setString("No weapon");
-	amount_of_bullets.setFont(font);
 }
 
 
@@ -123,31 +118,4 @@ void hero::reloading(Event *ev)
 	{
 		possessed_weapon->reload();
 	}
-}
-void hero::write_amount_of_bullets(RenderWindow *w)
-{
-	std::stringstream s;
-	s << possessed_weapon->get_ammo();
-	s << " ";
-	s << possessed_weapon->get_max_ammo();
-
-	std::string ammo;
-	std::string max_ammo;
-
-	s >> ammo;
-	s >> max_ammo;
-
-	std::string napis;
-
-	if (possessed_weapon->is_empty())
-	{
-		napis = "Reloading...";
-	}
-	else
-	{
-		napis = "Ammunition: " + napis + ammo + "/" + max_ammo;
-	}
-	amount_of_bullets.setString(napis);
-
-	w->draw(amount_of_bullets);
 }

@@ -34,8 +34,9 @@ void game::loop()
 		c->move(&window);
 		c->rotate(&window);
 		c->shooting(&window);
-		c->write_amount_of_bullets(&window);
 
+
+		ui.draw(&window, c);
 		c->draw(&window);
 		window.display();
 	}

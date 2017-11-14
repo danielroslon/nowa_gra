@@ -18,6 +18,10 @@ void character::set_position(float _x, float _y)
 	figure.setPosition(_x , _y);
 	possessed_weapon->set_weapon_position(_x,_y);
 }
+unsigned character::get_bullets()
+{
+	return possessed_weapon->get_ammo();
+}
 void character::draw(RenderWindow *w)
 {
 	w->draw(figure);

@@ -5,8 +5,6 @@
 class hero: public character
 {
 private:
-	Text amount_of_bullets;
-	Font font;
 public:
 	hero(RenderWindow*);
 	~hero();
@@ -15,7 +13,5 @@ public:
 	void rotate(RenderWindow*);
 	void shooting(RenderWindow*);
 	void reloading(Event*);
-
-	void write_amount_of_bullets(RenderWindow*);
 };
 

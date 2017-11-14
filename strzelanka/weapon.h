@@ -11,6 +11,7 @@ using namespace sf;
 class weapon
 {
 protected:
+	std::string name;
 	double dmg;
 	unsigned cooldown;
 	unsigned reload_time;
@@ -53,4 +54,7 @@ public:
 	void move_bullets(RenderWindow*);
 
 	void play_sound();
+
+
+	friend class user_interface;
 };
