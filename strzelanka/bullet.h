@@ -8,8 +8,8 @@ using namespace sf;
 class bullet
 {
 private:
-	static long bullet_no;
-	int id;
+	static unsigned bullet_no;
+	unsigned id;
 	double dmg;
 	float rotation;
 	CircleShape figure;

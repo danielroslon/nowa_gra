@@ -80,7 +80,59 @@ void weapon::shooting(container<bullet>& cont)
 	{
 		if (clock.getElapsedTime().asMilliseconds() >= cooldown)
 		{
-			cont.add(bullet(dmg, figure.getPosition().x, figure.getPosition().y, figure.getRotation()));
+			double x, y;
+			if (figure.getRotation() >= 0 && figure.getRotation() < 90)
+			{
+				x = figure.getRotation();
+				x = x * 0.0174532925;
+				x = cos(x);
+
+				y = figure.getRotation();
+				y = y * 0.0174532925;
+				y = sin(y);
+			}
+			if (figure.getRotation() >= 90 && figure.getRotation() < 180)
+			{
+				x = 90 - figure.getRotation();
+				x = x * 0.0174532925;
+				x = sin(x);
+
+				y = 90 - figure.getRotation();
+				y = y * 0.0174532925;
+				y = cos(y);
+			}
+			if (figure.getRotation() >= 180 && figure.getRotation() < 270)
+			{
+				x = 180 - figure.getRotation();
+				x = x * 0.0174532925;
+				x = cos(x);
+				x = - x;
+
+				y = 180 - figure.getRotation();
+				y = y * 0.0174532925;
+				y = sin(y);
+			}
+			if (figure.getRotation() >= 270 && figure.getRotation() < 360)
+			{
+				x = 270 - figure.getRotation();
+				x = x * 0.0174532925;
+				x = sin(x);
+				x = -x;
+
+				y = 270 - figure.getRotation();
+				y = y * 0.0174532925;
+				y = cos(y);
+				y = -y;
+			}
+
+
+			x = x *figure.getSize().x;
+			y = y * figure.getSize().x;
+
+
+
+
+			cont.add(bullet(dmg, figure.getPosition().x + x, figure.getPosition().y + y, figure.getRotation()));
 			play_sound();
 			bullets--;
 			clock.restart();

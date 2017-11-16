@@ -109,6 +109,7 @@ void game::loop()
 		enemy.move(&window);
 		enemy.rotate(&window);
 		enemy.shooting(&window, conten);
+		enemy.is_hit(conten);
 
 		ui.draw(&window, c);
 

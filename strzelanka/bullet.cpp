@@ -1,7 +1,7 @@
 #include "bullet.h"
 
 
-long bullet::bullet_no = 0;
+unsigned bullet::bullet_no = 0;
 
 bullet::bullet(double _dmg, float x, float y, float _rotation): figure(2), dmg(_dmg), rotation(_rotation)
 {
