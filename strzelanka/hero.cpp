@@ -93,19 +93,16 @@ void hero::rotate(RenderWindow* w)
 		crosshair.setPosition(m_x,m_y);		
 	}
 }
-void hero::shooting(RenderWindow* w)
+void hero::shooting(RenderWindow* w, container<bullet>& cont)
 {
 	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
-		possessed_weapon->shooting();
+		possessed_weapon->shooting(cont);
 	}
 	if (possessed_weapon->is_empty())
 	{
 		possessed_weapon->reload();
 	}
-	possessed_weapon->move_bullets(w);
-	possessed_weapon->render_bullets(w);
-	
 }
 void hero::reloading(Event *ev)
 {

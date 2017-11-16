@@ -32,21 +32,25 @@ void character::draw(RenderWindow *w)
 	possessed_weapon->draw_weapon(w);
 	w->draw(crosshair);
 }
-void character::is_hit(list *l)
+void character::is_hit(container<bullet> &c)
 {
-	bullet *wsk = l->get_head();
+	container<bullet>::iterator begin(c);
+	container<bullet>::iterator end(c, true);
 
-	while (wsk != NULL)
+	while (begin != end)
 	{
-		if (wsk->get_position().x >= figure.getPosition().x - figure.getRadius() && wsk->get_position().x <= figure.getPosition().x + figure.getRadius() 
-		&& wsk->get_position().y >= figure.getPosition().y - figure.getRadius() && wsk->get_position().y <= figure.getPosition().y + figure.getRadius())
+		bullet *temp = *begin;
+
+		if (temp != NULL)
 		{
-			hp = hp - wsk->dmg;
-			bullet *temp = wsk;
-			wsk = wsk->next;
-			l->remove_bullet(temp->get_id());
-			continue;
+
+			if (temp->get_position().x >= figure.getPosition().x - figure.getRadius() && temp->get_position().x <= figure.getPosition().x + figure.getRadius()
+				&& temp->get_position().y >= figure.getPosition().y - figure.getRadius() && temp->get_position().y <= figure.getPosition().y + figure.getRadius())
+			{
+				hp = hp - temp->get_dmg();
+				c.remove(temp->get_id());
+			}
 		}
-		wsk = wsk->next;
+		begin++;
 	}
 }

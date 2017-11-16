@@ -5,6 +5,7 @@
 
 
 #include "bullet.h"
+#include "container.h"
 
 using namespace sf;
 
@@ -24,8 +25,6 @@ protected:
 
 	Vector2f weapon_position;
 
-	list list_of_existing_bullets;
-
 	SoundBuffer b_shooting_sound;
 	Sound shooting_sound;
 	SoundBuffer b_bullet_drop_sound;
@@ -36,14 +35,10 @@ public:
 	weapon(Vector2f);
 	~weapon();
 
-	void shooting();
+	void shooting(container<bullet>&);
 	void reload();
 	bool is_empty();
 	bool is_full();
-	bool is_list_empty();
-	void render_bullets(RenderWindow*);
-	list* get_list();
-	bullet* get_head();
 
 	unsigned get_ammo();
 	unsigned get_max_ammo();
@@ -53,7 +48,6 @@ public:
 	void rotate_weapon(double);
 	Vector2f get_weapon_position();
 	float get_weapon_rotation();
-	void move_bullets(RenderWindow*);
 
 	void play_sound();
 	void set_volume(double);

@@ -1,28 +1,30 @@
 #include "bullet.h"
 
 
+long bullet::bullet_no = 0;
 
-bullet::bullet(double _dmg, Vector2f v, float r): figure(2), dmg(_dmg), next(NULL), prev(NULL), id(0)
+bullet::bullet(double _dmg, float x, float y, float _rotation): figure(2), dmg(_dmg), rotation(_rotation)
 {
 	figure.setFillColor(Color::Black);
 	figure.setOrigin(figure.getRadius(), figure.getRadius());
-	figure.setPosition(v);
-	figure.setRotation(r);
+	figure.setPosition(x,y);
+	figure.setRotation(rotation);
 	figure.scale(4,0.3);
+	bullet_no++;
+	id = bullet_no;
 }
-
-
-bullet::~bullet()
+bullet::bullet(const bullet &b)
 {
+	this->dmg = b.dmg;
+	this->figure = b.figure;
+	this->id = b.id;
+	this->rotation = b.rotation;
 }
+
 
 void bullet::set_dmg(double _dmg)
 {
 	dmg = _dmg;
-}
-void bullet::set_id(int _id)
-{
-	id = _id;
 }
 double bullet::get_dmg()
 {
@@ -41,158 +43,25 @@ double bullet::get_radius()
 {
 	return figure.getRadius();
 }
-
-
-list::list(): head(NULL), tail(NULL), ammount(0)
+float bullet::get_rotation()
 {
-
+	return figure.getRotation();
 }
 
-
-void list::add_bullet(double _dmg, Vector2f v, float r)
+CircleShape& bullet::get_figure()
 {
-	ammount++;
-	if (head == NULL)
-	{
-		head = new bullet(_dmg, v, r);
-		tail = head;
-	}
-	else
-	{
-		tail->next = new bullet(_dmg, v, r);
-		tail->next->prev = tail;
-		tail = tail->next;
-	}
-	tail->set_id(ammount);
+	return figure;
 }
-void list::remove_bullet(int _id)
-{
-	bullet *wsk = head;
 
-	while (wsk != NULL)
-	{
-		if (wsk->get_id() == _id)
-		{
-			break;
-		}
-		wsk = wsk->next;
-	}
-	if (wsk != NULL)
-	{
-		if (wsk == head)
-		{
-			if (wsk->next != NULL)
-			{
-				//head->set_id(0);
-				head = head->next;
-				//ammount = 0;
-			}
-			else
-			{
-				head = tail = NULL;
-			}
-		}
-		else if (wsk == tail)
-		{
-			tail = tail->prev;
-			tail->next = NULL;
-		}
-		else
-		{
-			wsk->prev->next = wsk->next;
-			wsk->next->prev = wsk->prev;
-		}
-		delete wsk;
-	}
+bool bullet::operator==(int i)
+{
+	return (id == i);
 }
-void list::render(RenderWindow *w)
+bullet& bullet::operator=(const bullet b)
 {
-	bullet *wsk = head;
-	while (wsk != NULL)
-	{
-		w->draw(wsk->figure);
-		wsk = wsk->next;
-	}
-}
-bool list::is_empty()
-{
-	if (head == NULL)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-void list::move(RenderWindow *w)
-{
-	bullet *wsk = head;
-	while (wsk != NULL)
-	{	
-		if (wsk->figure.getRotation() >= 0 && wsk->figure.getRotation() < 90)
-		{
-			double x = wsk->figure.getRotation();
-			x = x * 0.0174532925;
-			x = cos(x);
-
-			double y = wsk->figure.getRotation();
-			y = y * 0.0174532925;
-			y = sin(y);
-	
-			wsk->figure.move(x, y);
-		}	
-		if (wsk->figure.getRotation() >= 90 && wsk->figure.getRotation() < 180)
-		{
-			double x = 90 - wsk->figure.getRotation();
-			x = x * 0.0174532925;
-			x = sin(x);
-
-			double y = 90 - wsk->figure.getRotation();
-			y = y * 0.0174532925;
-			y = cos(y);
-
-			wsk->figure.move(x, y);
-		}
-		if (wsk->figure.getRotation() >= 180 && wsk->figure.getRotation() < 270)
-		{
-			double x = 180 - wsk->figure.getRotation();
-			x = x * 0.0174532925;
-			x = cos(x);
-
-			double y = 180 - wsk->figure.getRotation();
-			y = y * 0.0174532925;
-			y = sin(y);
-
-			wsk->figure.move(-x, y);
-		}
-		if (wsk->figure.getRotation() >= 270 && wsk->figure.getRotation() < 360)
-		{
-			double x = 270 - wsk->figure.getRotation();
-			x = x * 0.0174532925;
-			x = sin(x);
-
-			double y = 270 - wsk->figure.getRotation();
-			y = y * 0.0174532925;
-			y = cos(y);
-
-			wsk->figure.move(-x, -y);
-		}
-
-		//Usuwanie pocisków
-		if (wsk->figure.getPosition().x > w->getSize().x || wsk->figure.getPosition().y > w->getSize().y || wsk->figure.getPosition().x < 0 || wsk->figure.getPosition().y < 0)
-		{
-			bullet *b = wsk;
-			wsk = wsk->next;
-			remove_bullet(b->get_id());
-		}
-		if (wsk != NULL)
-		{
-			wsk = wsk->next;
-		}
-	}
-}
-bullet* list::get_head()
-{
-	return head;
+	this->dmg = b.dmg;
+	this->figure = b.figure;
+	this->id = b.id;
+	this->rotation = b.rotation;
+	return *this;
 }

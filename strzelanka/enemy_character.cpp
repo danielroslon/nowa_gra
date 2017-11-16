@@ -98,7 +98,7 @@ void enemy_character::rotate(RenderWindow* w)
 	}
 	
 }
-void enemy_character::shooting(RenderWindow* w)
+void enemy_character::shooting(RenderWindow* w, container<bullet>& cont)
 {
 	double v_x = fabs(figure.getPosition().x - hero_position.x);
 	double v_y = fabs(figure.getPosition().y - hero_position.y);
@@ -107,24 +107,16 @@ void enemy_character::shooting(RenderWindow* w)
 
 	if (distance_from_hero <= range_of_view)
 	{
-		possessed_weapon->shooting();
-		possessed_weapon->render_bullets(w);
+		possessed_weapon->shooting(cont);
 		if (possessed_weapon->is_empty())
 		{
 			possessed_weapon->reload();
 		}
 	}
-	possessed_weapon->move_bullets(w);
-	possessed_weapon->render_bullets(w);
 }
 void enemy_character::reloading(Event*)
 {
 
-}
-
-list* enemy_character::get_list_of_bullets()
-{
-	return possessed_weapon->get_list();
 }
 
 void enemy_character::get_hero_position(Vector2f v)

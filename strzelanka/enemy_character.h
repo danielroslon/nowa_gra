@@ -11,10 +11,9 @@ public:
 
 	void move(RenderWindow*);
 	void rotate(RenderWindow*);
-	void shooting(RenderWindow*);
+	void shooting(RenderWindow*, container<bullet>&);
 	void reloading(Event*);
 
 	void get_hero_position(Vector2f);
-	list* get_list_of_bullets();
 };
 
