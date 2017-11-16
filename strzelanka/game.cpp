@@ -33,7 +33,7 @@ void game::render_bullets()
 				y = y * 0.0174532925;
 				y = sin(y);
 
-				temp->get_figure().move(x,y);
+				temp->get_figure().move(x*4,y * 4);
 			}
 			if (temp->get_rotation() >= 90 && temp->get_rotation() < 180)
 			{
@@ -45,7 +45,7 @@ void game::render_bullets()
 				y = y * 0.0174532925;
 				y = cos(y);
 
-				temp->get_figure().move(x, y);
+				temp->get_figure().move(x * 4, y * 4);
 			}
 			if (temp->get_rotation() >= 180 && temp->get_rotation() < 270)
 			{
@@ -57,7 +57,7 @@ void game::render_bullets()
 				y = y * 0.0174532925;
 				y = sin(y);
 				
-				temp->get_figure().move(-x, y);
+				temp->get_figure().move(-x * 4, y * 4);
 			}
 			if (temp->get_rotation() >= 270 && temp->get_rotation() < 360)
 			{
@@ -69,7 +69,7 @@ void game::render_bullets()
 				y = y * 0.0174532925;
 				y = cos(y);
 
-				temp->get_figure().move(-x, -y);
+				temp->get_figure().move(-x * 4, -y * 4);
 			}
 
 			//Usuwanie pocisków

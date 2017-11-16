@@ -70,25 +70,29 @@ void hero::rotate(RenderWindow* w)
 		{
 			float rotation = v_y / v_x;
 			rotation = atan(rotation) * 180 / 3.14159265359;
-			possessed_weapon->rotate_weapon(rotation);
+			figure.setRotation(rotation);
+			possessed_weapon->rotate_weapon(figure.getRotation());
 		}
 		if (v_x <= 0 && v_y > 0)
 		{
 			float rotation = -v_x / v_y;
 			rotation = atan(rotation) * 180 / 3.14159265359;
-			possessed_weapon->rotate_weapon(rotation + 90);
+			figure.setRotation(rotation +90);
+			possessed_weapon->rotate_weapon(figure.getRotation());
 		}
 		if (v_x <= 0 && v_y < 0)
 		{
 			float rotation = v_y / v_x;
 			rotation = atan(rotation) * 180 / 3.14159265359;
-			possessed_weapon->rotate_weapon(rotation + 180);
+			figure.setRotation(rotation + 180);
+			possessed_weapon->rotate_weapon(figure.getRotation());
 		}
 		if (v_x >= 0 && v_y < 0)
 		{
 			float rotation = v_x / -v_y;
 			rotation = atan(rotation) * 180 / 3.14159265359;
-			possessed_weapon->rotate_weapon(rotation + 270);
+			figure.setRotation(rotation + 270);
+			possessed_weapon->rotate_weapon(figure.getRotation());
 		}
 		crosshair.setPosition(m_x,m_y);		
 	}
