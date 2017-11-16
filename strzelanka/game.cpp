@@ -96,7 +96,7 @@ void game::loop()
 			{
 				window.close();
 			}
-			
+			c.change_weapon(&ev);
 			c.reloading(&ev);
 		}
 

@@ -6,6 +6,7 @@
 
 #include "weapon.h"
 #include "m4a1.h"
+#include "sniper_rifle.h"
 #include "bullet.h"
 #include "container.h"
 

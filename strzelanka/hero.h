@@ -13,5 +13,6 @@ public:
 	void rotate(RenderWindow*);
 	void shooting(RenderWindow*, container<bullet>&);
 	void reloading(Event*);
+	void change_weapon(Event*);
 };
 

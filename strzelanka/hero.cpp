@@ -115,3 +115,16 @@ void hero::reloading(Event *ev)
 		possessed_weapon->reload();
 	}
 }
+void hero::change_weapon(Event* ev)
+{
+	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::Num1)
+	{
+		delete possessed_weapon;
+		possessed_weapon = new m4a1(figure.getPosition());
+	}
+	if (ev->type == ev->KeyPressed && ev->key.code == Keyboard::Num2)
+	{
+		delete possessed_weapon;
+		possessed_weapon = new sniper_rifle(figure.getPosition());
+	}
+}

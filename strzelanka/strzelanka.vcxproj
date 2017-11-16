@@ -154,6 +154,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="hero.cpp" />
     <ClCompile Include="m4a1.cpp" />
+    <ClCompile Include="sniper_rifle.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="user_interface.cpp" />
     <ClCompile Include="weapon.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="hero.h" />
     <ClInclude Include="m4a1.h" />
+    <ClInclude Include="sniper_rifle.h" />
     <ClInclude Include="user_interface.h" />
     <ClInclude Include="weapon.h" />
   </ItemGroup>
